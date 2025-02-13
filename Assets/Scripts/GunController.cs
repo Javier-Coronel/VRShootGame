@@ -5,17 +5,21 @@ using UnityEngine;
 public class GunController : MonoBehaviour
 {
     public GunLogic logic;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool stateOfTrigger = false;
+    public bool checker = true;
+    
 
     // Update is called once per frame
     void Update()
     {
         if (logic) { 
-
+            if(checker&&stateOfTrigger){
+                logic.StartingShooting();
+                checker=false;
+            }else if(checker&&!stateOfTrigger){
+                logic.EndingShooting();
+                checker=false;
+            }
         }
     }
 }

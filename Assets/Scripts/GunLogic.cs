@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class GunLogic : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public bool shooting = false;
+    public GameObject bullet;
+    public virtual void StartingShooting(){
+        shooting=true;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public virtual void EndingShooting(){
+        shooting=false;
     }
 }
