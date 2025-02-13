@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RifleLogic : GunLogic
 {
-    float timeBetweenBullets = 0.25f;
+    public float timeBetweenBullets = 0.25f;
     float timer = 0;
-    float damage=1;
 
     // Update is called once per frame
     void Update()
@@ -14,7 +14,7 @@ public class RifleLogic : GunLogic
         if(shooting){
             timer+=Time.deltaTime;
             if(timer >= timeBetweenBullets){
-                Instantiate(bullet,transform.position, Quaternion.identity);
+                GenerateBullet();
                 timer=0;
             }
         }

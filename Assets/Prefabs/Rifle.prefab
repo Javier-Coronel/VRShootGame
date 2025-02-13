@@ -129,4 +129,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shooting: 0
-  bullet: {fileID: 6681801829827083892, guid: 84394750eb16dd1428decbd20e16f798, type: 3}
+  bullet: {fileID: 8198470158939248766, guid: 84394750eb16dd1428decbd20e16f798, type: 3}
+  damage: 1
