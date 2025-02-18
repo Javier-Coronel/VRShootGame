@@ -92,9 +92,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1445837612123808610}
-  - component: {fileID: 3798173224822933147}
+  - component: {fileID: 8856553605827395924}
   m_Layer: 0
-  m_Name: Rifle
+  m_Name: Pistola
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ Transform:
   - {fileID: 3259121120497814866}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3798173224822933147
+--- !u!114 &8856553605827395924
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,9 +125,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1871828755928071376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5d4a6093f1772346955ff37aac6db08, type: 3}
+  m_Script: {fileID: 11500000, guid: a54f5e4aff12b15438fa5015b1475a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shooting: 0
   bullet: {fileID: 8198470158939248766, guid: 84394750eb16dd1428decbd20e16f798, type: 3}
-  damage: 1
+  damage: 0.4

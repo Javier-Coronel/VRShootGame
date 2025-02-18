@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class RifleLogic : GunLogic
+public class ContinuousGunLogic : GunLogic
 {
     public float timeBetweenBullets = 0.25f;
     float timer = 0;
@@ -18,11 +18,5 @@ public class RifleLogic : GunLogic
                 timer=0;
             }
         }
-    }
-    public override void StartingShooting(){
-        base.StartingShooting();
-    }
-    public override void EndingShooting(){
-        base.EndingShooting();
     }
 }
