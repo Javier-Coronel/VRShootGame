@@ -4,36 +4,46 @@ using UnityEngine;
 
 public class RailGunLogic : GunLogic
 {
-    public float timeBetweenBullets = 1f;
+    public float timeBetweenBullets = 5f;
     float timer = 0;
     public float loading = 0;
-    public float bulletTime=0.5f;
+    public Transform loadingShow;
+    public float bulletTime=5f;
+    private void Start()
+    {
+        bullet.damage = damage;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if(shooting){
+        if(shooting&& !bullet.isActiveAndEnabled)
+        {
             timer+=Time.deltaTime;
-            loading = timer / timeBetweenBullets;
+            loading = timer/timeBetweenBullets;
+            if (loading >= 1) loading = 1;
+            if (loadingShow) loadingShow.localScale= new Vector3(loadingShow.localScale.x, loading, loadingShow.localScale.z);
+
         }
     }
     public override void EndingShooting()
     {
         base.EndingShooting();
-        if(timer >= timeBetweenBullets){
+        if(loading >= 1)
+        {
             GenerateBullet();
-            
         }
         timer=0;
+        loading = 0;
+        if (loadingShow) loadingShow.localScale = new Vector3(loadingShow.localScale.x, loading, loadingShow.localScale.z);
     }
     public override void GenerateBullet()
     {
         StartCoroutine(EnableBullet());
     }
     IEnumerator EnableBullet(){
-        bullet.enabled = true;
-        bullet.damage = damage;
+        bullet.gameObject.SetActive(true);
         yield return new WaitForSeconds(bulletTime);
-        bullet.enabled = false;
+        bullet.gameObject.SetActive(false);
     }
 }
