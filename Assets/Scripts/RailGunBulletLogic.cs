@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class RailGunBulletLogic : BulletLogic
 {
+    public override void Update() { }
     public override void OnCollisionEnter(Collision collision){ }
 }

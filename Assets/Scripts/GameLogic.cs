@@ -6,15 +6,17 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     public static GameLogic Instance { get; private set; }
-    int round = 0;
+    int round = 1;
     public float maxLife = 10;
     public float life = 10;
     public GameObject enemyPrefab;
     public List<GameObject> enemies;
     public GameObject gunUI;
-    public GunLogic[] gunsPrefabs;
+    public GameObject[] gunsPrefabs;
     public int randGun = 0;
     private bool onRound = false;
+    public ControllerLogic controllerLogicRight;
+    public ControllerLogic controllerLogicLeft;
 
     void Awake()
     {
@@ -38,11 +40,12 @@ public class GameLogic : MonoBehaviour
     {
         if (onRound)
         {
-            foreach (var item in enemies)
+            for (int i =0;i< enemies.Count;i++)
             {
-                if (!item)
+                if (!enemies[i])
                 {
-                    enemies.Remove(item);
+                    enemies.Remove(enemies[i]);
+                    i--;
                 }
             }
             if (life <= 0)
@@ -53,7 +56,9 @@ public class GameLogic : MonoBehaviour
                     if (item) Destroy(item);
                     enemies.Remove(item);
                 }
-
+                controllerLogicRight.DeleteAllGuns();
+                controllerLogicLeft.DeleteAllGuns();
+                gunUI.transform.GetChild(0).GetChild(0).GetChild(gunUI.transform.GetChild(0).GetChild(0).childCount - 1).gameObject.SetActive(false);
             }
             if (enemies.Count == 0)
             {
@@ -66,12 +71,13 @@ public class GameLogic : MonoBehaviour
     {
         onRound = false;
         gunUI.SetActive(true);
-        randGun = UnityEngine.Random.Range(0, gunsPrefabs.Length - 1);
-        gunUI.transform.GetChild(0).GetChild(randGun).gameObject.SetActive(true);
-
+        randGun = UnityEngine.Random.Range(0, gunsPrefabs.Length);
+        gunUI.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(randGun).gameObject.SetActive(true);
+        if(round==2)gunUI.transform.GetChild(0).GetChild(0).GetChild(gunUI.transform.GetChild(0).GetChild(0).childCount-1).gameObject.SetActive(true);
     }
     public void GetOnRound()
     {
+        gunUI.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(randGun).gameObject.SetActive(false);
         onRound = true;
         life = maxLife;
         int enemiesInRound = round * (int)Math.Floor(Math.E * 1.5);

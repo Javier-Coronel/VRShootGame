@@ -23,8 +23,18 @@ public class GunController : MonoBehaviour
         }
     }
     public void SetGun(){
-        if(!logic)return;
-        logic = Instantiate(GameLogic.Instance.gunsPrefabs[GameLogic.Instance.randGun],gameObject.transform);
-
+        if (logic) 
+        {
+            Destroy(logic.gameObject);
+        }
+        GameObject logicToAdd = Instantiate(GameLogic.Instance.gunsPrefabs[GameLogic.Instance.randGun].gameObject,gameObject.transform);
+        logic = logicToAdd.GetComponent<GunLogic>();
+    }
+    public void DestroyGun()
+    {
+        if (logic)
+        {
+            Destroy(logic.gameObject);
+        }
     }
 }

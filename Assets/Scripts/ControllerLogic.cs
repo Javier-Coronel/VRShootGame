@@ -31,6 +31,13 @@ public class ControllerLogic : MonoBehaviour
             gun.checker=true;
         }
     }
+    public void DeleteAllGuns()
+    {
+        foreach (var gun in controllers)
+        {
+            gun.DestroyGun();
+        }
+    }
 }
 
 public enum Hands {Izquierda=1,Derecha=2};

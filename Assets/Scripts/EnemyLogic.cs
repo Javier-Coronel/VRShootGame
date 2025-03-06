@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyLogic : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class EnemyLogic : MonoBehaviour
     float step = 0;
     void Update()
     {
+        if (transform.position.x>60|| transform.position.z > 60)
+        {
+            Destroy(gameObject);
+        }
         ownRigidBody.velocity = (Vector3.zero-transform.position).normalized*(maxValue-life+0.5f)/velocityMod;
         step+=Time.deltaTime;
         if(step>=0.25){
@@ -43,10 +48,12 @@ public class EnemyLogic : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+            return;
         }
-        else if(other.TryGetComponent<GameLogic>(out GameLogic game))
+        
+        if (other.CompareTag("Player"))
         {
-            game.life -=life/2f;
+            GameLogic.Instance.life -=life/2f;
             Destroy(gameObject);
         }
     }
