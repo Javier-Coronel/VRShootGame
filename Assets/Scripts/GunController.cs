@@ -22,4 +22,9 @@ public class GunController : MonoBehaviour
             }
         }
     }
+    public void SetGun(){
+        if(!logic)return;
+        logic = Instantiate(GameLogic.Instance.gunsPrefabs[GameLogic.Instance.randGun],gameObject.transform);
+
+    }
 }

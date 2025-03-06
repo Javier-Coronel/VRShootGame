@@ -12,7 +12,7 @@ public class BulletLogic : MonoBehaviour
     {
         transform.Translate(Vector3.forward*Time.deltaTime*velocity);
         Debug.Log(transform.forward);
-        if(Mathf.Abs(transform.position.x)>60|| Mathf.Abs(transform.position.y) > 60 || Mathf.Abs(transform.position.z) > 60)
+        if(damage<=0 || Mathf.Abs(transform.position.x)>60 || Mathf.Abs(transform.position.y) > 60 || Mathf.Abs(transform.position.z) > 60)
         {
             Destroy(gameObject);
         }

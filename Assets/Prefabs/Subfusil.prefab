@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Subfusil
       objectReference: {fileID: 0}
+    - target: {fileID: 2213407448166731905, guid: cccac2b5f1dc9e244a823ef5b159c52e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5f75e65dc686ca349b7caac0292bafc4, type: 2}
     - target: {fileID: 3798173224822933147, guid: cccac2b5f1dc9e244a823ef5b159c52e, type: 3}
       propertyPath: damage
       value: 0.5

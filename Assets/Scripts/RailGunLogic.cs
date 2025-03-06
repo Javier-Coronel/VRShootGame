@@ -41,8 +41,10 @@ public class RailGunLogic : GunLogic
     {
         StartCoroutine(EnableBullet());
     }
-    IEnumerator EnableBullet(){
+    IEnumerator EnableBullet()
+    {
         bullet.gameObject.SetActive(true);
+        bullet.damage = damage;
         yield return new WaitForSeconds(bulletTime);
         bullet.gameObject.SetActive(false);
     }
